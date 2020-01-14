@@ -17,20 +17,35 @@ $(document).ready(function(){
     sum = sum + subject_points[4];
     $("#sum_indicate").text(sum);
 
-    // ここに、上記を参考にして平均点を出力する処理を書き込む
-    const sub_count = document.getElementsByTagName('input');
-      for (let i = 0, i<sub_count.length; i++) {
-        console.log(sub_count);
-      }
 
-    let avg = sum/sub_count;
+
+    // ここに、上記を参考にして平均点を出力する処理を書き込む
+
+    // const sub_count = document.getElementsByTagName('input');
+    // for (let i = 0; i<sub_count.length; i++) {
+    //   }
+
+    let avg = sum/subject_points.length;
     $("#average_indicate").text(avg);
 
   };
 
   function get_achievement(){
     // ここに、ランクの値の文字列（平均点が80点以上なら"A"、60点以上なら"B"、40点以上なら"C"、それ以下なら"D"）を出力する処理を書き込む
+    // let avg2 = $("#average_indicate").text
+    if (avg >= 80) {
+      return "A";
+    } else if (avg >= 60){
+      return "B";
+    } else if (avg >= 40) {
+      return "C";
+    } else {
+      return "D";
+    }
+debugger
+    // console.log(get_achievement);
   }
+
 
   function get_pass_or_failure(){
     // ここに、全ての教科が60点以上なら"合格"の文字列、一つでも60点未満の教科があったら"不合格"の文字列を出す処理を書き込む
