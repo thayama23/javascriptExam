@@ -33,23 +33,37 @@ $(document).ready(function(){
   function get_achievement(){
     // ここに、ランクの値の文字列（平均点が80点以上なら"A"、60点以上なら"B"、40点以上なら"C"、それ以下なら"D"）を出力する処理を書き込む
     // let avg2 = $("#average_indicate").text
-    if (avg >= 80) {
-      return "A";
-    } else if (avg >= 60){
-      return "B";
-    } else if (avg >= 40) {
-      return "C";
+    let avgsc = score_indicate();
+    if (avgsc >= 80) {
+      rank = "A";
+    } else if (avgsc >= 60){
+      rank = "B";
+    } else if (avgsc >= 40) {
+      rank = "C";
     } else {
-      return "D";
+      rank = "D";
     }
-debugger
+    $("#evaluation").text(rank);
+
     // console.log(get_achievement);
-  }
+  };
 
 
   function get_pass_or_failure(){
     // ここに、全ての教科が60点以上なら"合格"の文字列、一つでも60点未満の教科があったら"不合格"の文字列を出す処理を書き込む
-  }
+
+
+
+      for(let i=0; i<subject_points.length; i++){
+        if(subject_points[i]<60){
+          $('#judge').text("不合格");
+          break;
+        }
+        else {
+          $('#judge').text("合格");
+        }
+    }
+  };
 
   function judgement(){
     // ここに、「最終ジャッジ」のボタンを押したら「あなたの成績はAです。合格です」といった内容を出力する処理を書き込む
