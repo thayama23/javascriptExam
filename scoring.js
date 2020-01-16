@@ -28,6 +28,7 @@ $(document).ready(function(){
     let avg = sum/subject_points.length;
     $("#average_indicate").text(avg);
 
+    return avg;
   };
 
   function get_achievement(){
@@ -45,6 +46,8 @@ $(document).ready(function(){
     };
     $("#evaluation").text(rank);
 
+    return rank;
+
     // console.log(get_achievement);
   };
 
@@ -59,15 +62,23 @@ $(document).ready(function(){
                           ];
 
 
+      // for(let i=0; i<subject_points.length; i++){
+      //   if(subject_points[i]<60){
+      //     $('#judge').text("不合格");
+      //     break;
+      //   }
+      //   else {
+      //     $('#judge').text("合格");
+      let judge = "合格";
       for(let i=0; i<subject_points.length; i++){
         if(subject_points[i]<60){
-          $('#judge').text("不合格");
+          judge= "不合格";
           break;
         }
-        else {
-          $('#judge').text("合格");
-        }
     }
+    $('#judge').text(judge);
+
+    return judge;
   };
 
   function judgement(){
@@ -76,7 +87,7 @@ $(document).ready(function(){
     let achievement = get_achievement ();
     let pass_or_fail = get_pass_or_failure ();
 
-    $('#declaration').append(`<label id="alert-indicate" class="alert alert-info">あなたの成績は${achievement}です。${get_pass_or_failure}です</label>`);
+    $('#declaration').append(`<label id="alert-indicate" class="alert alert-info">あなたの成績は${achievement}です。${pass_or_fail}です</label>`);
   };
 
   $('#national_language, #english, #mathematics, #science, #society').change(function() {
